@@ -352,7 +352,7 @@ class App(customtkinter.CTk):
         time.sleep(2)
         contador_de_processos += 1
 
-        elementos = driver.find_elements(By.XPATH, "//a[contains(@aria-label, 'Mensagem')]")
+        elementos = driver.find_elements(By.XPATH, "//a[contains(@aria-label, 'Enviar mensagem')]")
 
         for elemento in elementos:
 
@@ -417,7 +417,7 @@ class App(customtkinter.CTk):
                 self.carrega_mais_itens(driver)
             time.sleep(2)
             # busca e adiciona novo itens a lista
-            nova_busca = driver.find_elements(By.XPATH, "//a[contains(@aria-label, 'Mensagem')]")
+            nova_busca = driver.find_elements(By.XPATH, "//a[contains(@aria-label, 'Enviar mensagem')]")
             add_itens = [x for x in nova_busca if x not in elementos]  # mantém a ordem
             elementos.extend(add_itens)
 
@@ -431,7 +431,7 @@ class App(customtkinter.CTk):
         contador_de_processos += 1
         time.sleep(2)
         driver.quit()
-        self.tela_principal()
+        self.after(0, self.tela_principal)
 
     def _processar_conexoes(self,texto,quantidade):
 
@@ -523,7 +523,7 @@ class App(customtkinter.CTk):
 
         time.sleep(3)
         driver.quit()
-        self.tela_principal()
+        self.after(0, self.tela_principal)
 
     def carrega_mais_itens(self, driver):
         try:
